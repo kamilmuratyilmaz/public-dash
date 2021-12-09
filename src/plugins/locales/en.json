@@ -1,6 +1,9 @@
 {
     "user": {
         "sign_in": "Sign In",
-        "register": "Register"
-    }
+        "register": "Register",
+        "options": "User Options"
+    },
+
+    "dashboard": "Dashboard"
 }

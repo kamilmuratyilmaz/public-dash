@@ -1,6 +1,9 @@
 {
     "user": {
         "sign_in": "Giriş Yap",
-        "register": "Kayıt ol"
-    }
+        "register": "Kayıt ol",
+        "options": "Kullanıcı Ayarları"
+    },
+
+    "dashboard": "Gösterge Paneli"
 }
