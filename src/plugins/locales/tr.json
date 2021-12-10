@@ -7,5 +7,19 @@
 
     "dashboard": "Gösterge Paneli",
     "head": "Enerjiyi Kontrol Edin, Geleceği Kontrol Edin",
-    "slogan": "Enerji Yönetim Sistemi"
+    "slogan": "Enerji Yönetim Sistemi",
+
+    "modal": {
+        "title_sign_in": "Giriş Yap",
+        "title_register": "Kayıt Ol",
+        "email": "Email Girin",
+        "name": "İsim Giriniz",
+        "password": "Parolanızı Girin",
+        "remember": "Beni Hatırla",
+        "label": {
+            "email": "Email Adresi",
+            "name": "İsim",
+            "password": "Parola"
+        }
+    }
 }

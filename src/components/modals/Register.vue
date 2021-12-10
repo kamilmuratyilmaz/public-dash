@@ -5,30 +5,28 @@
       ref="modal"
       centered
       v-model="modal"
-      @ok="handleOk"
-      title="Register"
+      :title="translate.title"
+      @cancel="cancelRouter"
+      @ok="cancelRouter"
     >
-      <form ref="form" @submit.stop.prevent="handleSubmit">
+      <form>
         <b-form-group
           id="input-group-1"
-          label="Email address:"
+          :label="translate.label.email"
           label-for="email-input"
         >
           <b-form-input
             id="email-input"
             v-model="form.email"
-            type="email"
-            placeholder="Enter email"
+            :placeholder="translate.email"
             required
           ></b-form-input>
         </b-form-group>
 
         <b-form-group
           id="input-group-2"
-          label="Your Name:"
+          :label="translate.label.name"
           label-for="name-input"
-          :invalid-feedback="invalidFeedback"
-          :state="nameState"
         >
           <b-form-input
             id="name-input"
@@ -40,13 +38,13 @@
 
         <b-form-group
           id="input-group-3"
-          label="Your Password:"
+          :label="translate.label.password"
           label-for="password-input"
         >
           <b-form-input
             id="password-input"
             v-model="form.password"
-            placeholder="Enter Password"
+            :placeholder="translate.password"
             required
           ></b-form-input>
         </b-form-group>
@@ -60,8 +58,29 @@ export default {
   name: "Register",
   data() {
     return {
+      form: {
+        name: "",
+        email: "",
+        password: "",
+      },
       modal: this.$route.meta.modal,
+      translate: {
+        title: this.$t("modal.title_register"),
+        email: this.$t("modal.email"),
+        name: this.$t("modal.name"),
+        password: this.$t("modal.password"),
+        label: {
+          email: this.$t("modal.label.email"),
+          name: this.$t("modal.label.name"),
+          password: this.$t("modal.label.password"),
+        },
+      },
     };
+  },
+  methods: {
+    cancelRouter() {
+      this.$router.push("/");
+    },
   },
 };
 </script>

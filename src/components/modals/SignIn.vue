@@ -5,36 +5,32 @@
       ref="modal"
       centered
       v-model="modal"
-      @ok="handleOk"
-      title="Sign In"
+      :title="translate.title"
+      @cancel="cancelRouter"
+      @ok="cancelRouter"
     >
-      <b-form @submit="onSubmit" @reset="onReset">
+      <b-form>
         <b-form-group
           id="input-group-1"
-          label="Email address:"
+          :label="translate.label.email"
           label-for="email-input"
-          description="We'll never share your email with anyone else."
         >
           <b-form-input
             id="email-input"
             v-model="form.email"
-            type="email"
-            placeholder="Enter email"
-            required
-            :state="emailState"
+            :placeholder="translate.email"
           ></b-form-input>
         </b-form-group>
 
         <b-form-group
           id="input-group-2"
-          label="Your Password:"
+          :label="translate.label.password"
           label-for="password-input"
         >
           <b-form-input
             id="password-input"
             v-model="form.password"
-            placeholder="Enter Password"
-            required
+            :placeholder="translate.password"
           ></b-form-input>
         </b-form-group>
 
@@ -44,7 +40,9 @@
             id="checkboxes-3"
             :aria-describedby="ariaDescribedby"
           >
-            <b-form-checkbox value="saved">Check me out</b-form-checkbox>
+            <b-form-checkbox value="saved">{{
+              translate.remember
+            }}</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
       </b-form>
@@ -57,8 +55,28 @@ export default {
   name: "SignIn",
   data() {
     return {
+      form: {
+        email: "",
+        password: "",
+        checked: "",
+      },
       modal: this.$route.meta.modal,
+      translate: {
+        title: this.$t("modal.title_sign_in"),
+        email: this.$t("modal.email"),
+        password: this.$t("modal.password"),
+        remember: this.$t("modal.remember"),
+        label: {
+          email: this.$t("modal.label.email"),
+          password: this.$t("modal.label.password"),
+        },
+      },
     };
+  },
+  methods: {
+    cancelRouter() {
+      this.$router.push("/");
+    },
   },
 };
 </script>

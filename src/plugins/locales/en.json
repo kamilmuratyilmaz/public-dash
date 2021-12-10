@@ -7,5 +7,19 @@
 
     "dashboard": "Dashboard",
     "head": "Control the Energy, Control the Future",
-    "slogan": "Energy Management System"
+    "slogan": "Energy Management System",
+
+    "modal": {
+        "title_sign_in": "Sign In",
+        "title_register": "Register",
+        "email": "Enter Email",
+        "name": "Enter Name",
+        "password": "Enter Password",
+        "remember": "Remember Me",
+        "label": {
+            "email": "Email Address",
+            "name": "Name",
+            "password": "Password"
+        }
+    }
 }
