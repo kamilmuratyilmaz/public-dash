@@ -2,7 +2,7 @@
     "user": {
         "sign_in": "Giriş Yap",
         "register": "Kayıt ol",
-        "options": "Kullanıcı Ayarları"
+        "settings": "Kullanıcı Ayarları"
     },
 
     "dashboard": "Gösterge Paneli",

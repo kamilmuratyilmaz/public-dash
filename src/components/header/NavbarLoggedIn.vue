@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="nav-login">
     <b-navbar type="dark" variant="dark">
       <b-navbar-brand href="/">UserName</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
@@ -8,11 +8,10 @@
             <SelectLanguage />
           </b-col>
           <b-button class="mx-2 my-sm-0" @click="buttonFunctions(`dashboard`)">{{
-            // eslint-disable-next-line prettier/prettier
             $t("dashboard")
           }}</b-button>
-          <b-button class="mx-2 my-sm-0" @click="buttonFunctions(`options`)">{{
-            $t("user.options")
+          <b-button class="mx-2 my-sm-0" @click="buttonFunctions(`settings`)">{{
+            $t("user.settings")
           }}</b-button>
         </b-nav-form>
       </b-navbar-nav>
@@ -39,7 +38,7 @@ export default {
           name: "Dashboard",
           params: { id: "dashboard" },
         });
-      } else if (val == "options") {
+      } else if (val == "settings") {
         this.$router.push({
           name: "UserSettings",
           params: { id: "settings" },

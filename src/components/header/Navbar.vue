@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="nav-dafult">
     <b-navbar type="dark" variant="dark">
       <b-navbar-brand href="/">{{ $t("slogan") }}</b-navbar-brand>
       <b-navbar-nav class="ml-auto">
