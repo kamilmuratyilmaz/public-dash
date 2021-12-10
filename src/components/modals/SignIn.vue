@@ -57,40 +57,8 @@ export default {
   name: "SignIn",
   data() {
     return {
-      form: {
-        email: "",
-        password: "",
-        checked: "",
-      },
-      submittedEmails: [],
       modal: this.$route.meta.modal,
     };
-  },
-  computed: {},
-  methods: {
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity();
-      this.emailState = valid;
-      return valid;
-    },
-    handleOk(bvModalEvt) {
-      // Prevent modal from closing
-      bvModalEvt.preventDefault();
-      // Trigger submit handler
-      this.handleSubmit();
-    },
-    handleSubmit() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return;
-      }
-      // Push the name to submitted names
-      this.submittedEmails.push(this.form.email);
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide("modal-center");
-      });
-    },
   },
 };
 </script>

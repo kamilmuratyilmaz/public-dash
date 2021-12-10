@@ -5,8 +5,6 @@
       ref="modal"
       centered
       v-model="modal"
-      @show="resetModal"
-      @hidden="resetModal"
       @ok="handleOk"
       title="Register"
     >
@@ -62,55 +60,8 @@ export default {
   name: "Register",
   data() {
     return {
-      form: {
-        email: "",
-        name: "",
-        password: "",
-      },
-      submittedNames: [],
       modal: this.$route.meta.modal,
     };
-  },
-  computed: {
-    nameState() {
-      return this.form.name.length >= 4;
-    },
-    invalidFeedback() {
-      if (this.form.name.length > 0) {
-        return "Enter at least 4 characters.";
-      }
-      return "Please enter something.";
-    },
-  },
-  methods: {
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity();
-      this.nameState = valid;
-      return valid;
-    },
-    resetModal() {
-      this.form.name = "";
-      this.form.email = "";
-      this.form.password = "";
-    },
-    handleOk(bvModalEvt) {
-      // Prevent modal from closing
-      bvModalEvt.preventDefault();
-      // Trigger submit handler
-      this.handleSubmit();
-    },
-    handleSubmit() {
-      // Exit when the form isn't valid
-      if (!this.checkFormValidity()) {
-        return;
-      }
-      // Push the name to submitted names
-      this.submittedNames.push(this.form.name);
-      // Hide the modal manually
-      this.$nextTick(() => {
-        this.$bvModal.hide("modal-center");
-      });
-    },
   },
 };
 </script>
