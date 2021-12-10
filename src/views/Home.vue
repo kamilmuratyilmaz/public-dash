@@ -5,13 +5,26 @@
 
   <div class="login" v-else>
     <Navbar />
-    <b-img-lazy
-      center
-      class="mt-5"
-      src="@/assets/homepage_renewable.jpeg"
-      fluid
-      alt="Responsive image"
-    ></b-img-lazy>
+    <b-container fluid>
+      <b-row>
+        <b-col class="mt-5">
+          <h1>{{ $t("head") }}</h1>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col>
+          <b-img-lazy
+            rounded
+            center
+            class="mt-5"
+            src="@/assets/homepage_renewable.jpeg"
+            fluid
+            alt="homepage_renewable"
+          ></b-img-lazy>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -27,7 +40,7 @@ export default {
   },
   data() {
     return {
-      user: "login",
+      user: "logsin",
     };
   },
 };

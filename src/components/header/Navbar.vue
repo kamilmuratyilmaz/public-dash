@@ -1,9 +1,11 @@
 <template>
   <b-navbar type="dark" variant="dark">
-    <b-navbar-brand href="#">NavBar</b-navbar-brand>
+    <b-navbar-brand href="#">{{ $t("slogan") }}</b-navbar-brand>
     <b-navbar-nav class="ml-auto">
       <b-nav-form>
-        <SelectLanguage />
+        <b-col class="mr-4">
+          <SelectLanguage />
+        </b-col>
         <b-button class="mx-2 my-sm-0">{{ $t("user.sign_in") }}</b-button>
         <b-button class="mx-2 my-sm-0">{{ $t("user.register") }}</b-button>
       </b-nav-form>
