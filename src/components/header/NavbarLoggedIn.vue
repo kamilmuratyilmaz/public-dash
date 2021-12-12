@@ -12,6 +12,8 @@
             <b-col class="mr-4 ml-4">
               <SelectLanguage />
             </b-col>
+          </b-nav-form>
+          <b-nav-form>
             <b-button
               class="mx-2 my-sm-0"
               @click="buttonFunctions(`dashboard`)"

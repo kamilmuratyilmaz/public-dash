@@ -6,8 +6,8 @@
       centered
       v-model="modal"
       :title="translate.title"
-      @cancel="cancelRouter"
       @ok="cancelRouter"
+      @hidden="cancelRouter"
     >
       <form>
         <b-form-group
