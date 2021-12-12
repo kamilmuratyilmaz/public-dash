@@ -25,6 +25,16 @@ const routes = [
           modal: true,
         },
       },
+      {
+        path: "user-name/:id",
+        name: "Dashboard",
+        component: () => import("../views/user_logged_in/Dashboard.vue"),
+      },
+      {
+        path: "user-name/:id",
+        name: "UserSettings",
+        component: () => import("../views/user_logged_in/UserSettings.vue"),
+      },
     ],
   },
 ];

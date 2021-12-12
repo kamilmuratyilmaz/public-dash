@@ -1,15 +1,19 @@
 <template>
   <div id="nav-login">
     <b-navbar type="dark" variant="dark">
-      <b-navbar-brand href="/">UserName</b-navbar-brand>
+      <b-navbar-brand :to="{ path: '/user-name/dashboard' }"
+        >UserName</b-navbar-brand
+      >
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-col class="mr-4">
             <SelectLanguage />
           </b-col>
-          <b-button class="mx-2 my-sm-0" @click="buttonFunctions(`dashboard`)">{{
-            $t("dashboard")
-          }}</b-button>
+          <b-button
+            class="mx-2 my-sm-0"
+            @click="buttonFunctions(`dashboard`)"
+            >{{ $t("dashboard") }}</b-button
+          >
           <b-button class="mx-2 my-sm-0" @click="buttonFunctions(`settings`)">{{
             $t("user.settings")
           }}</b-button>
