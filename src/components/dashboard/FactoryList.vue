@@ -1,8 +1,52 @@
 <template>
   <div id="factory-list">
-    <b-table :items="items" :fields="fields" caption-top>
-      <template #table-caption> Factory List </template>
+    <b-table
+      :ref="table"
+      :items="items"
+      :fields="fields"
+      caption-top
+      hover
+      responsive
+      striped
+      selectable
+      head-variant="dark"
+      :sort-by.sync="sortBy"
+      :sort-desc.sync="sortDesc"
+    >
+      <template #table-caption>
+        <b style="font-size: 20px">{{ $t("table.factory_list") }}</b>
+      </template>
+
+      <template #cell(actions)="row">
+        <b-button
+          size="sm"
+          @click="info(row.item, row.index, $event.target)"
+          class="mr-1"
+        >
+          {{ $t("table.edit") }}
+        </b-button>
+        <b-button size="sm" @click="row.toggleDetails">
+          {{ row.detailsShowing ? $t("table.hide") : $t("table.show") }}
+          JSON
+        </b-button>
+      </template>
+
+      <template #row-details="row">
+        <b-card>
+          <b-row v-for="(value, key) in row.item" :key="key">
+            <b> {{ JSON.stringify(key) }}: {{ JSON.stringify(value) }} </b>
+          </b-row>
+        </b-card>
+      </template>
     </b-table>
+    <b-modal
+      :id="infoModal.id"
+      :title="infoModal.title"
+      ok-only
+      @hide="resetInfoModal"
+    >
+      <pre>{{ infoModal.content }}</pre>
+    </b-modal>
   </div>
 </template>
 
@@ -10,13 +54,8 @@
 export default {
   data() {
     return {
-      fields: [
-        "factory_name",
-        "subscribe_date",
-        "subscription_ending",
-        "employees",
-        "special_subscriber",
-      ],
+      sortBy: null,
+      sortDesc: false,
       items: [
         {
           factory_name: "Mk Makina",
@@ -33,7 +72,52 @@ export default {
           special_subscriber: true,
         },
       ],
+
+      infoModal: {
+        id: "info-modal",
+        title: "",
+        content: "",
+      },
     };
+  },
+  methods: {
+    info(item, index, button) {
+      this.infoModal.title = `Row index: ${index}`;
+      this.infoModal.content = JSON.stringify(item, null, 2);
+      this.$root.$emit("bv::show::modal", this.infoModal.id, button);
+    },
+    resetInfoModal() {
+      this.infoModal.title = "";
+      this.infoModal.content = "";
+    },
+  },
+  computed: {
+    fields() {
+      return [
+        {
+          key: "factory_name",
+          label: this.$t("table.factory_name"),
+          sortable: false,
+        },
+        {
+          key: "subscribe_date",
+          label: this.$t("table.subscribe_date"),
+          sortable: true,
+        },
+        {
+          key: "subscription_ending",
+          label: this.$t("table.subscription_ending"),
+          sortable: true,
+        },
+        { key: "employees", label: this.$t("table.employees"), sortable: true },
+        {
+          key: "special_subscriber",
+          label: this.$t("table.special_subscriber"),
+          sortable: true,
+        },
+        { key: "actions", label: this.$t("table.actions") },
+      ];
+    },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="dashboard">
     <h1>THIS IS DASHBOARD</h1>
-    <b-card style="display: inline-table" border-variant="success">
+    <b-card style="display: inline-table" borderless="true">
       <FactoryList />
     </b-card>
     <FactoryTable />

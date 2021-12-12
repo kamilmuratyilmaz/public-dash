@@ -21,5 +21,18 @@
             "name": "İsim",
             "password": "Parola"
         }
+    },
+
+    "table": {
+        "factory_list": "Fabrika Listesi",
+        "factory_name": "Fabrika Adı",
+        "subscribe_date": "Üyelik Tarihi",
+        "subscription_ending": "Üyelik Bitişi",
+        "employees": "Çalışanlar",
+        "special_subscriber": "Özel Üye",
+        "actions": "Eylemler",
+        "show": "Göster",
+        "hide": "Gizle",
+        "edit": "Düzenle"
     }
 }

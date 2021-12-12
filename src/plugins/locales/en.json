@@ -21,5 +21,18 @@
             "name": "Name",
             "password": "Password"
         }
+    },
+
+    "table": {
+        "factory_list": "Factory List",
+        "factory_name": "Factory Name",
+        "subscribe_date": "Subscribe Date",
+        "subscription_ending": "Subscription Ending",
+        "employees": "Employees",
+        "special_subscriber": "Special Subscriber",
+        "actions": "Actions",
+        "show": "Show",
+        "hide": "Hide",
+        "edit": "Edit"
     }
 }
