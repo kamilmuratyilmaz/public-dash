@@ -48,6 +48,16 @@
             required
           ></b-form-input>
         </b-form-group>
+
+        <b-form-group id="input-group-4">
+          <b-form-select
+            v-model="form.authorization"
+            :options="options"
+            size="sm"
+            class="mt-0"
+          >
+          </b-form-select>
+        </b-form-group>
       </form>
     </b-modal>
   </div>
@@ -62,6 +72,7 @@ export default {
         name: "",
         email: "",
         password: "",
+        authorization: "",
       },
       modal: this.$route.meta.modal,
       translate: {
@@ -75,11 +86,17 @@ export default {
           password: this.$t("modal.label.password"),
         },
       },
+      options: ["User", "Admin"],
     };
   },
   methods: {
     cancelRouter() {
       this.$router.push("/");
+    },
+  },
+  watch: {
+    form() {
+      console.log(this.form);
     },
   },
 };

@@ -58,7 +58,7 @@ export default {
       form: {
         email: "",
         password: "",
-        checked: "",
+        checked: [],
       },
       modal: this.$route.meta.modal,
       translate: {
