@@ -29,9 +29,11 @@
 
       <template #row-details="row">
         <b-card>
-          <b-row v-for="(value, key) in row.item" :key="key">
-            <b> {{ JSON.stringify(key) }}: {{ JSON.stringify(value) }} </b>
-          </b-row>
+          <pre><b> {{ JSON.stringify(row.item, function 
+              replacer(key, value) {
+                if (key == "_showDetails") return undefined;
+                return value; },'\t') }} 
+          </b></pre>
         </b-card>
       </template>
     </b-table>
@@ -80,11 +82,10 @@ export default {
   methods: {
     edit(item, index) {
       this.infoModal.title = `Row index: ${index}`;
-      this.infoModal.content = JSON.stringify(item, null, 2);
       this.$router.push({
         name: "EditTable",
         query: { edit: "factory-list" },
-        params: { items: this.items, fields: this.fields },
+        params: { items: item, fields: this.fields },
       });
     },
     resetInfoModal() {
