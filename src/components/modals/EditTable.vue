@@ -1,44 +1,46 @@
 <template>
-  <div id="edit-table">
-    <b-table :items="items" :fields="fields">
-      <template #cell(name)="data">
-        <b-form-input
-          v-if="items[data.index].isEdit"
-          type="text"
-          v-model="items[data.index].name"
-        ></b-form-input>
-        <span v-else>{{ data.value }}</span>
-      </template>
-      <template #cell(department)="data">
-        <b-form-select
-          v-if="items[data.index].isEdit"
-          v-model="items[data.index].department"
-          :options="['Development', 'Marketing', 'HR', 'Accounting']"
-        ></b-form-select>
-        <span v-else>{{ data.value }}</span>
-      </template>
-      <template #cell(age)="data">
-        <b-form-input
-          v-if="items[data.index].isEdit"
-          type="number"
-          v-model="items[data.index].age"
-        ></b-form-input>
-        <span v-else>{{ data.value }}</span>
-      </template>
-      <template #cell(dateOfBirth)="data">
-        <b-form-datepicker
-          v-if="items[data.index].isEdit"
-          v-model="items[data.index].dateOfBirth"
-        ></b-form-datepicker>
-        <span v-else>{{ data.value }}</span>
-      </template>
-      <template #cell(edit)="data">
-        <b-button @click="editRowHandler(data)">
-          <span v-if="!items[data.index].isEdit">Edit</span>
-          <span v-else>Done</span>
-        </b-button>
-      </template>
-    </b-table>
+  <div id="edit-table-modal">
+    <b-modal>
+      <b-table :items="items" :fields="fields">
+        <template #cell(name)="data">
+          <b-form-input
+            v-if="items[data.index].isEdit"
+            type="text"
+            v-model="items[data.index].name"
+          ></b-form-input>
+          <span v-else>{{ data.value }}</span>
+        </template>
+        <template #cell(department)="data">
+          <b-form-select
+            v-if="items[data.index].isEdit"
+            v-model="items[data.index].department"
+            :options="['Development', 'Marketing', 'HR', 'Accounting']"
+          ></b-form-select>
+          <span v-else>{{ data.value }}</span>
+        </template>
+        <template #cell(age)="data">
+          <b-form-input
+            v-if="items[data.index].isEdit"
+            type="number"
+            v-model="items[data.index].age"
+          ></b-form-input>
+          <span v-else>{{ data.value }}</span>
+        </template>
+        <template #cell(dateOfBirth)="data">
+          <b-form-datepicker
+            v-if="items[data.index].isEdit"
+            v-model="items[data.index].dateOfBirth"
+          ></b-form-datepicker>
+          <span v-else>{{ data.value }}</span>
+        </template>
+        <template #cell(edit)="data">
+          <b-button @click="editRowHandler(data)">
+            <span v-if="!items[data.index].isEdit">Edit</span>
+            <span v-else>Done</span>
+          </b-button>
+        </template>
+      </b-table>
+    </b-modal>
     <pre>
       {{ items }}
     </pre>
