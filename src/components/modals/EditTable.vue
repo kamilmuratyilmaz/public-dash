@@ -6,7 +6,7 @@
       size="xl"
       v-model="modal"
       :title="translateTitle"
-      @ok="cancelModal"
+      @ok="changeData"
       @hidden="cancelModal"
     >
       <b-table id="edit-table" :items="items" :fields="fields" responsive>
@@ -96,6 +96,12 @@ export default {
       this.items = this.items.map((item) => ({ ...item, isEdit: false }));
       this.items[data.index].isEdit = true;
       this.selectedCell = name;
+    },
+    changeData() {
+      this.$router.push({
+        name: "FactoryList",
+        meta: { items: this.items, fields: this.fields },
+      });
     },
     cancelModal() {
       this.$router.push("/user-name/:dashboard");
