@@ -36,7 +36,6 @@
         </b-card>
       </template>
     </b-table>
-    {{ selected }}
     <router-view></router-view>
   </div>
 </template>
@@ -48,7 +47,6 @@ export default {
     return {
       sortBy: null,
       sortDesc: false,
-      selected: [],
       items: [
         {
           factory_unit: "Mk Makina",
@@ -73,11 +71,6 @@ export default {
         name: "EditTable",
         query: { edit: "factory-list" },
         params: { items: this.items, fields: this.fields },
-      });
-    },
-    onRowSelected(items) {
-      this.selected = items.map((item) => {
-        return item.factory_name;
       });
     },
   },
