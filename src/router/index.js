@@ -35,6 +35,9 @@ const routes = [
             name: "EditTable",
             props: true,
             component: () => import("../components/modals/EditTable.vue"),
+            meta: {
+              modal: true,
+            },
           },
         ],
       },

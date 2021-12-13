@@ -2,7 +2,6 @@
   <div id="register">
     <b-modal
       id="modal-center"
-      ref="modal"
       centered
       v-model="modal"
       :title="translate.title"
@@ -92,11 +91,6 @@ export default {
   methods: {
     cancelRouter() {
       this.$router.push("/");
-    },
-  },
-  watch: {
-    form() {
-      console.log(this.form);
     },
   },
 };

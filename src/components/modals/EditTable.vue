@@ -1,6 +1,13 @@
 <template>
   <div id="edit-table-modal">
-    <b-modal>
+    <b-modal
+      id="modal-center"
+      centered
+      v-model="modal"
+      :title="translate"
+      @ok="cancelRouter"
+      @hidden="cancelRouter"
+    >
       <b-table id="edit-table" :items="items" :fields="fields">
         <template #cell(factory_name)="data">
           <b-form-input
@@ -68,6 +75,8 @@ export default {
   data() {
     return {
       selectedCell: null,
+      translate: this.$t("table.edit"),
+      modal: this.$route.meta.modal,
     };
   },
   mounted() {
@@ -78,6 +87,9 @@ export default {
       this.items = this.items.map((item) => ({ ...item, isEdit: false }));
       this.items[data.index].isEdit = true;
       this.selectedCell = name;
+    },
+    cancelRouter() {
+      this.$router.push("/user-name/:dashboard");
     },
   },
 };
