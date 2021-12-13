@@ -2,42 +2,58 @@
   <div id="edit-table-modal">
     <b-modal>
       <b-table :items="items" :fields="fields">
-        <template #cell(name)="data">
+        <template #cell(factory_name)="data">
           <b-form-input
-            v-if="items[data.index].isEdit"
+            v-if="items[data.index].isEdit && selectedCell === 'factory_name'"
             type="text"
-            v-model="items[data.index].name"
+            v-model="items[data.index].factory_name"
           ></b-form-input>
-          <span v-else>{{ data.value }}</span>
+          <span v-else @click="editCellHandler(data, 'factory_name')">{{
+            data.value
+          }}</span>
         </template>
-        <template #cell(department)="data">
+        <template #cell(subscribe_date)="data">
           <b-form-select
-            v-if="items[data.index].isEdit"
-            v-model="items[data.index].department"
+            v-if="items[data.index].isEdit && selectedCell === 'subscribe_date'"
+            v-model="items[data.index].subscribe_date"
             :options="['Development', 'Marketing', 'HR', 'Accounting']"
+            class="form-control"
           ></b-form-select>
-          <span v-else>{{ data.value }}</span>
+          <span v-else @click="editCellHandler(data, 'subscribe_date')">{{
+            data.value
+          }}</span>
         </template>
-        <template #cell(age)="data">
+        <template #cell(subscription_ending)="data">
           <b-form-input
-            v-if="items[data.index].isEdit"
+            v-if="
+              items[data.index].isEdit && selectedCell === 'subscription_ending'
+            "
             type="number"
-            v-model="items[data.index].age"
+            v-model="items[data.index].subscription_ending"
           ></b-form-input>
-          <span v-else>{{ data.value }}</span>
+          <span v-else @click="editCellHandler(data, 'subscription_ending')">{{
+            data.value
+          }}</span>
         </template>
-        <template #cell(dateOfBirth)="data">
+        <template #cell(employees)="data">
           <b-form-datepicker
-            v-if="items[data.index].isEdit"
-            v-model="items[data.index].dateOfBirth"
+            v-if="items[data.index].isEdit && selectedCell === 'employees'"
+            v-model="items[data.index].employees"
           ></b-form-datepicker>
-          <span v-else>{{ data.value }}</span>
+          <span v-else @click="editCellHandler(data, 'employees')">{{
+            data.value
+          }}</span>
         </template>
-        <template #cell(edit)="data">
-          <b-button @click="editRowHandler(data)">
-            <span v-if="!items[data.index].isEdit">Edit</span>
-            <span v-else>Done</span>
-          </b-button>
+        <template #cell(special_subscriber)="data">
+          <b-form-datepicker
+            v-if="
+              items[data.index].isEdit && selectedCell === 'special_subscriber'
+            "
+            v-model="items[data.index].special_subscriber"
+          ></b-form-datepicker>
+          <span v-else @click="editCellHandler(data, 'special_subscriber')">{{
+            data.value
+          }}</span>
         </template>
       </b-table>
     </b-modal>
@@ -49,51 +65,22 @@
 
 <script>
 export default {
-  name: "App",
+  name: "EditTable",
   components: {},
+  props: ["items", "fields"],
   data() {
     return {
-      fields: [
-        { key: "name", label: "Name" },
-        { key: "department", label: "Department" },
-        { key: "age", label: "Age" },
-        { key: "dateOfBirth", label: "Date Of Birth" },
-        { key: "edit", label: "" },
-      ],
-      items: [
-        {
-          age: 40,
-          name: "Dickerson",
-          department: "Development",
-          dateOfBirth: "1984-05-20",
-        },
-        {
-          age: 21,
-          name: "Larsen",
-          department: "Marketing",
-          dateOfBirth: "1984-05-20",
-        },
-        {
-          age: 89,
-          name: "Geneva",
-          department: "HR",
-          dateOfBirth: "1984-05-20",
-        },
-        {
-          age: 38,
-          name: "Jami",
-          department: "Accounting",
-          dateOfBirth: "1984-05-20",
-        },
-      ],
+      selectedCell: null,
     };
   },
   mounted() {
     this.items = this.items.map((item) => ({ ...item, isEdit: false }));
   },
   methods: {
-    editRowHandler(data) {
-      this.items[data.index].isEdit = !this.items[data.index].isEdit;
+    editCellHandler(data, name) {
+      this.items = this.items.map((item) => ({ ...item, isEdit: false }));
+      this.items[data.index].isEdit = true;
+      this.selectedCell = name;
     },
   },
 };

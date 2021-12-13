@@ -20,7 +20,7 @@
       <template #cell(actions)="row">
         <b-button
           size="sm"
-          @click="info(row.item, row.index, $event.target)"
+          @click="edit(row.item, row.index, $event.target)"
           class="mr-1"
         >
           {{ $t("table.edit") }}
@@ -81,10 +81,15 @@ export default {
     };
   },
   methods: {
-    info(item, index, button) {
+    edit(item, index) {
       this.infoModal.title = `Row index: ${index}`;
       this.infoModal.content = JSON.stringify(item, null, 2);
-      this.$root.$emit("bv::show::modal", this.infoModal.id, button);
+      this.$router.push({
+        name: "EditTable",
+        path: "register",
+        query: { edit: "factory-list" },
+        params: { items: this.items, fields: this.fields },
+      });
     },
     resetInfoModal() {
       this.infoModal.title = "";

@@ -48,12 +48,12 @@ export default {
       if (val == "dashboard") {
         this.$router.push({
           name: "Dashboard",
-          params: { id: "dashboard" },
+          params: { id: ":dashboard" },
         });
       } else if (val == "settings") {
         this.$router.push({
           name: "UserSettings",
-          params: { id: "settings" },
+          params: { id: ":settings" },
         });
       }
     },

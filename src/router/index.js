@@ -29,6 +29,17 @@ const routes = [
         path: "user-name/:id",
         name: "Dashboard",
         component: () => import("../views/user_logged_in/Dashboard.vue"),
+        children: [
+          {
+            path: "",
+            name: "EditTable",
+            props: {
+              default: true,
+              sidebar: (route) => ({ query: route.query.edit }),
+            },
+            component: () => import("../components/modals/EditTable.vue"),
+          },
+        ],
       },
       {
         path: "user-name/:id",
