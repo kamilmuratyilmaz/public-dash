@@ -79,6 +79,7 @@ export default {
       this.selected = items.map((item) => {
         return item.factory_name;
       });
+      console.log(this.selected);
     },
   },
   computed: {

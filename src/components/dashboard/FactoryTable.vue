@@ -9,7 +9,6 @@
       responsive
       striped
       selectable
-      @row-selected="onRowSelected"
       head-variant="dark"
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
