@@ -4,12 +4,13 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  strict: true,
   state: {
-    selected: null,
+    selected: [],
   },
   mutations: {
     SET_SELECTED_FACTORY(state, factory) {
-      state.selected.push(factory);
+      state.selected = factory;
     },
   },
   actions: {

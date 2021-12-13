@@ -42,13 +42,13 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 export default {
   name: "FactoryList",
   data() {
     return {
       sortBy: null,
       sortDesc: false,
-      selected: [],
       items: [
         {
           factory_name: "Mk Makina",
@@ -68,6 +68,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["getFactory"]),
     edit() {
       this.$router.push({
         name: "EditTable",
@@ -76,13 +77,15 @@ export default {
       });
     },
     onRowSelected(items) {
-      this.selected = items.map((item) => {
+      let factory = items.map((item) => {
         return item.factory_name;
       });
+      this.getFactory(factory);
       console.log(this.selected);
     },
   },
   computed: {
+    ...mapState(["selected"]),
     fields() {
       return [
         {
