@@ -5,8 +5,8 @@
       centered
       v-model="modal"
       :title="translate.title"
-      @ok="cancelRouter"
-      @hidden="cancelRouter"
+      @ok="cancelModal"
+      @hidden="cancelModal"
     >
       <form>
         <b-form-group
@@ -89,7 +89,7 @@ export default {
     };
   },
   methods: {
-    cancelRouter() {
+    cancelModal() {
       this.$router.push("/");
     },
   },

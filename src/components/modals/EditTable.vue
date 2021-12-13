@@ -5,8 +5,8 @@
       centered
       v-model="modal"
       :title="translate"
-      @ok="cancelRouter"
-      @hidden="cancelRouter"
+      @ok="cancelModal"
+      @hidden="cancelModal"
     >
       <b-table id="edit-table" :items="items" :fields="fields">
         <template #cell(factory_name)="data">
@@ -88,7 +88,7 @@ export default {
       this.items[data.index].isEdit = true;
       this.selectedCell = name;
     },
-    cancelRouter() {
+    cancelModal() {
       this.$router.push("/user-name/:dashboard");
     },
   },
