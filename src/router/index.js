@@ -28,6 +28,7 @@ const routes = [
       {
         path: "user-name/:id",
         name: "Dashboard",
+        props: true,
         component: () => import("../views/user_logged_in/Dashboard.vue"),
         children: [
           {

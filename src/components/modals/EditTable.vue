@@ -4,7 +4,7 @@
       id="modal-center"
       centered
       v-model="modal"
-      :title="translate"
+      :title="translateTitle"
       @ok="cancelModal"
       @hidden="cancelModal"
     >
@@ -22,6 +22,7 @@
         <template #cell(subscribe_date)="data">
           <b-form-input
             v-if="items[data.index].isEdit && selectedCell === 'subscribe_date'"
+            type="date"
             v-model="items[data.index].subscribe_date"
             class="form-control"
           ></b-form-input>
@@ -34,7 +35,7 @@
             v-if="
               items[data.index].isEdit && selectedCell === 'subscription_ending'
             "
-            type="number"
+            type="date"
             v-model="items[data.index].subscription_ending"
           ></b-form-input>
           <span v-else @click="editCellHandler(data, 'subscription_ending')">{{
@@ -44,6 +45,7 @@
         <template #cell(employees)="data">
           <b-form-input
             v-if="items[data.index].isEdit && selectedCell === 'employees'"
+            type="number"
             v-model="items[data.index].employees"
           ></b-form-input>
           <span v-else @click="editCellHandler(data, 'employees')">{{
@@ -55,6 +57,7 @@
             v-if="
               items[data.index].isEdit && selectedCell === 'special_subscriber'
             "
+            type="boolean"
             v-model="items[data.index].special_subscriber"
             :options="[true, false]"
           ></b-form-select>
@@ -75,7 +78,7 @@ export default {
   data() {
     return {
       selectedCell: null,
-      translate: this.$t("table.edit"),
+      translateTitle: this.$t("table.edit"),
       modal: this.$route.meta.modal,
     };
   },
