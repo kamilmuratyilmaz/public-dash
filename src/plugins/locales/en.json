@@ -33,6 +33,12 @@
         "actions": "Actions",
         "show": "Show",
         "hide": "Hide",
-        "edit": "Edit"
+        "edit": "Edit",
+
+        "factory_unit": "Factory Unit",
+        "date_range": "Date Range",
+        "usage_kW": "Usage kW",
+        "usage_fee": "Usage Fee",
+        "discounted_price": "Discounted Price"
     }
 }

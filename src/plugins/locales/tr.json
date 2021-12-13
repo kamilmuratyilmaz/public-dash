@@ -33,6 +33,12 @@
         "actions": "Eylemler",
         "show": "Göster",
         "hide": "Gizle",
-        "edit": "Düzenle"
+        "edit": "Düzenle",
+        
+        "factory_unit": "Fabrika Ünitesi",
+        "date_range": "Tarih Aralığı",
+        "usage_kW": "Kullanım kW",
+        "usage_fee": "Kullanım Bedeli",
+        "discounted_price": "İndirimli Fiyat"
     }
 }
