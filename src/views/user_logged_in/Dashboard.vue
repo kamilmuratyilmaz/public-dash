@@ -5,6 +5,7 @@
       <FactoryList />
     </b-card>
     <FactoryTable />
+    {{route}}
   </div>
 </template>
 
@@ -17,6 +18,11 @@ export default {
   components: {
     FactoryList,
     FactoryTable,
+  },
+  data() {
+    return {
+      route: this.$route.params.id,
+    };
   },
 };
 </script>
