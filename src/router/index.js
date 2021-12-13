@@ -31,7 +31,7 @@ const routes = [
         component: () => import("../views/user_logged_in/Dashboard.vue"),
         children: [
           {
-            path: "",
+            path: "edit-table",
             name: "EditTable",
             props: true,
             component: () => import("../components/modals/EditTable.vue"),

@@ -2,7 +2,6 @@
   <div id="factory-list">
     <b-table
       id="factory-list"
-      :ref="table"
       :items="items"
       :fields="fields"
       caption-top
@@ -18,7 +17,7 @@
         <b style="font-size: 20px">{{ $t("table.factory_list") }}</b>
       </template>
 
-      <template #cell(actions)="row">
+      <template #cell(edit)="row">
         <b-button size="sm" @click="edit(row.item, row.index)" class="mr-1">
           {{ $t("table.edit") }}
         </b-button>
@@ -49,6 +48,7 @@
 
 <script>
 export default {
+  name: "FactoryList",
   data() {
     return {
       sortBy: null,
@@ -99,24 +99,33 @@ export default {
           key: "factory_name",
           label: this.$t("table.factory_name"),
           sortable: false,
+          type: "text",
         },
         {
           key: "subscribe_date",
           label: this.$t("table.subscribe_date"),
           sortable: true,
+          type: "date",
         },
         {
           key: "subscription_ending",
           label: this.$t("table.subscription_ending"),
           sortable: true,
+          type: "date",
         },
-        { key: "employees", label: this.$t("table.employees"), sortable: true },
+        {
+          key: "employees",
+          label: this.$t("table.employees"),
+          sortable: true,
+          type: "number",
+        },
         {
           key: "special_subscriber",
           label: this.$t("table.special_subscriber"),
           sortable: true,
+          type: "boolean",
         },
-        { key: "actions", label: this.$t("table.actions") },
+        { key: "edit", label: this.$t("table.actions"), type: "edit" },
       ];
     },
   },
