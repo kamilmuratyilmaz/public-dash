@@ -1,7 +1,7 @@
 <template>
   <div id="edit-table-modal">
     <b-modal>
-      <b-table :items="items" :fields="fields">
+      <b-table id="edit-table" :items="items" :fields="fields">
         <template #cell(factory_name)="data">
           <b-form-input
             v-if="items[data.index].isEdit && selectedCell === 'factory_name'"
@@ -13,12 +13,11 @@
           }}</span>
         </template>
         <template #cell(subscribe_date)="data">
-          <b-form-select
+          <b-form-input
             v-if="items[data.index].isEdit && selectedCell === 'subscribe_date'"
             v-model="items[data.index].subscribe_date"
-            :options="['Development', 'Marketing', 'HR', 'Accounting']"
             class="form-control"
-          ></b-form-select>
+          ></b-form-input>
           <span v-else @click="editCellHandler(data, 'subscribe_date')">{{
             data.value
           }}</span>
@@ -36,30 +35,28 @@
           }}</span>
         </template>
         <template #cell(employees)="data">
-          <b-form-datepicker
+          <b-form-input
             v-if="items[data.index].isEdit && selectedCell === 'employees'"
             v-model="items[data.index].employees"
-          ></b-form-datepicker>
+          ></b-form-input>
           <span v-else @click="editCellHandler(data, 'employees')">{{
             data.value
           }}</span>
         </template>
         <template #cell(special_subscriber)="data">
-          <b-form-datepicker
+          <b-form-select
             v-if="
               items[data.index].isEdit && selectedCell === 'special_subscriber'
             "
             v-model="items[data.index].special_subscriber"
-          ></b-form-datepicker>
+            :options="[true, false]"
+          ></b-form-select>
           <span v-else @click="editCellHandler(data, 'special_subscriber')">{{
             data.value
           }}</span>
         </template>
       </b-table>
     </b-modal>
-    <pre>
-      {{ items }}
-    </pre>
   </div>
 </template>
 

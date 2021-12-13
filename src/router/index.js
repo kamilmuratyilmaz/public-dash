@@ -33,10 +33,7 @@ const routes = [
           {
             path: "",
             name: "EditTable",
-            props: {
-              default: true,
-              sidebar: (route) => ({ query: route.query.edit }),
-            },
+            props: true,
             component: () => import("../components/modals/EditTable.vue"),
           },
         ],

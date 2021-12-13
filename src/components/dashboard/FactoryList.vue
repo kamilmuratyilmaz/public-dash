@@ -1,6 +1,7 @@
 <template>
   <div id="factory-list">
     <b-table
+      id="factory-list"
       :ref="table"
       :items="items"
       :fields="fields"
@@ -18,11 +19,7 @@
       </template>
 
       <template #cell(actions)="row">
-        <b-button
-          size="sm"
-          @click="edit(row.item, row.index, $event.target)"
-          class="mr-1"
-        >
+        <b-button size="sm" @click="edit(row.item, row.index)" class="mr-1">
           {{ $t("table.edit") }}
         </b-button>
         <b-button size="sm" @click="row.toggleDetails">
@@ -86,7 +83,6 @@ export default {
       this.infoModal.content = JSON.stringify(item, null, 2);
       this.$router.push({
         name: "EditTable",
-        path: "register",
         query: { edit: "factory-list" },
         params: { items: this.items, fields: this.fields },
       });
