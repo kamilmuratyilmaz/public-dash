@@ -1,10 +1,12 @@
 <template>
   <div id="dashboard">
     <h1>THIS IS DASHBOARD</h1>
-    <b-card style="display: inline-table" borderless="true">
+    <b-card id="factory-list" style="display: inline-table" borderless="true">
       <FactoryList />
+      <b-card id="factory-table">
+        <FactoryTable />
+      </b-card>
     </b-card>
-    <FactoryTable />
     {{ route }}
   </div>
 </template>
