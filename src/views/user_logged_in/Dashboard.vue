@@ -5,7 +5,7 @@
       <FactoryList />
     </b-card>
     <FactoryTable />
-    {{route}}
+    {{ route }}
   </div>
 </template>
 

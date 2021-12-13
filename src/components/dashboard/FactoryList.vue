@@ -29,22 +29,12 @@
 
       <template #row-details="row">
         <b-card>
-          <pre><b> {{ JSON.stringify(row.item, function 
-              replacer(key, value) {
-                if (key == "_showDetails") return undefined;
-                return value; },'\t') }} 
+          <pre><b> {{ JSON.stringify(row.item,function replacer(key, value)
+             {if (key == "_showDetails") return undefined;  return value; },'\t') }} 
           </b></pre>
         </b-card>
       </template>
     </b-table>
-    <b-modal
-      :id="infoModal.id"
-      :title="infoModal.title"
-      ok-only
-      @hide="resetInfoModal"
-    >
-      <pre>{{ infoModal.content }}</pre>
-    </b-modal>
   </div>
 </template>
 
@@ -71,21 +61,14 @@ export default {
           special_subscriber: true,
         },
       ],
-
-      infoModal: {
-        id: "info-modal",
-        title: "",
-        content: "",
-      },
     };
   },
   methods: {
-    edit(item, index) {
-      this.infoModal.title = `Row index: ${index}`;
+    edit() {
       this.$router.push({
         name: "EditTable",
         query: { edit: "factory-list" },
-        params: { items: item, fields: this.fields },
+        params: { items: this.items, fields: this.fields },
       });
     },
     resetInfoModal() {
