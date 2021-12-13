@@ -18,7 +18,7 @@
       </template>
 
       <template #cell(edit)="row">
-        <b-button size="sm" @click="edit(row.item, row.index)" class="mr-1">
+        <b-button size="sm" @click="edit()" class="mr-1">
           {{ $t("table.edit") }}
         </b-button>
         <b-button size="sm" @click="row.toggleDetails">
@@ -35,6 +35,7 @@
         </b-card>
       </template>
     </b-table>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -70,10 +71,6 @@ export default {
         query: { edit: "factory-list" },
         params: { items: this.items, fields: this.fields },
       });
-    },
-    resetInfoModal() {
-      this.infoModal.title = "";
-      this.infoModal.content = "";
     },
   },
   computed: {
