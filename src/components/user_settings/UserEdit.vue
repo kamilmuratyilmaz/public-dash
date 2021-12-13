@@ -1,6 +1,16 @@
 <template>
   <div id="user-edit">
-    <b-card>
+    <b-card
+      id="user-edit-card"
+      style="
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 70%;
+      "
+      bg-variant="info"
+      text-variant="white"
+    >
       <b-form>
         <b-form-group
           id="input-group-1"
@@ -80,16 +90,7 @@ export default {
       options: ["User", "Admin"],
     };
   },
-  methods: {
-    cancelRouter() {
-      this.$router.push("/");
-    },
-  },
-  watch: {
-    form() {
-      console.log(this.form);
-    },
-  },
+  methods: {},
 };
 </script>
 
