@@ -1,7 +1,7 @@
 <template>
   <div id="nav-login">
     <b-navbar type="dark" variant="dark">
-      <b-navbar-brand :to="{ path: '/user-name/dashboard' }"
+      <b-navbar-brand :to="{ path: '/user-name/:dashboard' }"
         >UserName</b-navbar-brand
       >
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
