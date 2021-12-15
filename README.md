@@ -35,6 +35,7 @@ Energy Management System for Facilities
 - [node-postgres]
 - [mongoose]
 - [jsonwebtoken]
+- [bcryptjs]
 
 
 [Bootstrap Vue]: https://bootstrap-vue.org/
@@ -48,3 +49,4 @@ Energy Management System for Facilities
 [node-postgres]: https://node-postgres.com/
 [mongoose]: https://mongoosejs.com/
 [jsonwebtoken]: https://jwt.io/introduction
+[bcryptjs]: https://www.npmjs.com/package/bcrypt
