@@ -15,6 +15,7 @@ Energy Management System for Facilities
 - Responsive Design
 - Backend / Frontend Included
 - SQL Database & MongoDB
+- Bcrypt
 
 ### Technologies
 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="19px" height="15px"></a> JavaScript 
