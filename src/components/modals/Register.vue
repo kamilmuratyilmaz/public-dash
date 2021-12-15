@@ -5,10 +5,11 @@
       centered
       v-model="modal"
       :title="translate.title"
-      @ok="cancelModal"
-      @hidden="cancelModal"
+      @ok="submitModal"
+      @hidden="routeBack"
     >
-      <form>
+      <!-- Email -->
+      <b-form>
         <b-form-group
           id="input-group-1"
           :label="translate.label.email"
@@ -16,12 +17,15 @@
         >
           <b-form-input
             id="email-input"
-            v-model="form.email"
+            v-model="$v.user.email.$model"
             :placeholder="translate.email"
-            required
+            :state="$v.user.email.$error ? false : null"
           ></b-form-input>
+          <b-alert :show="$v.user.email.$error" class="alert-email"
+            >Email is not valid</b-alert
+          >
         </b-form-group>
-
+        <!-- Name -->
         <b-form-group
           id="input-group-2"
           :label="translate.label.name"
@@ -29,12 +33,15 @@
         >
           <b-form-input
             id="name-input"
-            v-model="form.name"
-            placeholder="Enter name"
-            required
+            v-model="$v.user.name.$model"
+            :placeholder="translate.name"
+            :state="$v.user.name.$error ? false : null"
           ></b-form-input>
+          <b-alert :show="$v.user.name.$error" class="alert-name"
+            >Name is not valid</b-alert
+          >
         </b-form-group>
-
+        <!-- Password -->
         <b-form-group
           id="input-group-3"
           :label="translate.label.password"
@@ -42,37 +49,33 @@
         >
           <b-form-input
             id="password-input"
-            v-model="form.password"
+            v-model="$v.user.password.$model"
             :placeholder="translate.password"
-            required
+            :state="$v.user.password.$error ? false : null"
           ></b-form-input>
         </b-form-group>
-
+        <!-- Role -->
         <b-form-group id="input-group-4">
           <b-form-select
-            v-model="form.authorization"
+            v-model="$v.user.role.$model"
             :options="options"
             size="sm"
             class="mt-0"
           >
           </b-form-select>
         </b-form-group>
-      </form>
+      </b-form>
     </b-modal>
   </div>
 </template>
 
 <script>
+import { register } from "@/mixins/validation.js";
 export default {
   name: "Register",
+  mixins: [register],
   data() {
     return {
-      form: {
-        name: "",
-        email: "",
-        password: "",
-        authorization: "",
-      },
       modal: this.$route.meta.modal,
       translate: {
         title: this.$t("modal.title_register"),
@@ -89,8 +92,11 @@ export default {
     };
   },
   methods: {
-    cancelModal() {
+    routeBack() {
       this.$router.push("/");
+    },
+    submitModal() {
+      this.$v.$touch();
     },
   },
 };

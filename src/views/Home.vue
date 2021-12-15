@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      user: "logsin",
+      user: "login",
     };
   },
 };

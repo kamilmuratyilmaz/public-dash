@@ -5,8 +5,8 @@
       centered
       v-model="modal"
       :title="translate.title"
-      @ok="cancelModal"
-      @hidden="cancelModal"
+      @ok="submitModal"
+      @hidden="routeBack"
     >
       <b-form>
         <b-form-group
@@ -16,8 +16,9 @@
         >
           <b-form-input
             id="email-input"
-            v-model="form.email"
+            v-model="$v.user.email.$model"
             :placeholder="translate.email"
+            :state="$v.user.email.$error ? false : null"
           ></b-form-input>
         </b-form-group>
 
@@ -28,14 +29,15 @@
         >
           <b-form-input
             id="password-input"
-            v-model="form.password"
+            v-model="$v.user.password.$model"
             :placeholder="translate.password"
+            :state="$v.user.password.$error ? false : null"
           ></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-3" v-slot="{ ariaDescribedby }">
           <b-form-checkbox-group
-            v-model="form.checked"
+            v-model="$v.user.checked.$model"
             id="checkboxes-3"
             :aria-describedby="ariaDescribedby"
           >
@@ -50,15 +52,12 @@
 </template>
 
 <script>
+import { login } from "@/mixins/validation.js";
 export default {
   name: "SignIn",
+  mixins: [login],
   data() {
     return {
-      form: {
-        email: "",
-        password: "",
-        checked: [],
-      },
       modal: this.$route.meta.modal,
       translate: {
         title: this.$t("modal.title_sign_in"),
@@ -73,8 +72,11 @@ export default {
     };
   },
   methods: {
-    cancelModal() {
+    routeBack() {
       this.$router.push("/");
+    },
+    submitModal() {
+      this.$v.$touch();
     },
   },
 };
