@@ -40,5 +40,11 @@
         "usage_kW": "Usage kW",
         "usage_fee": "Usage Fee",
         "discounted_price": "Discounted Price"
+    },
+
+    "toaster": {
+        "title": "Welcome",
+        "register_message": "Your Registeration Successful",
+        "login_message": "Login Successful"
     }
 }

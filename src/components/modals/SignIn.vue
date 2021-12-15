@@ -53,6 +53,7 @@
 
 <script>
 import { login } from "@/mixins/validation.js";
+import { mapActions } from "vuex";
 export default {
   name: "SignIn",
   mixins: [login],
@@ -72,11 +73,19 @@ export default {
     };
   },
   methods: {
+    ...mapActions("user", ["login"]),
     routeBack() {
-      this.$router.push("/");
+      setTimeout(() => this.$router.push("/"), 2500);
     },
     submitModal() {
       this.$v.$touch();
+      this.login;
+      this.$bvToast.toast(this.$t("toaster.login_message"), {
+        title: `${this.$t("toaster.title")} ${this.$v.user.email.$model}`,
+        toaster: "b-toaster-top-center",
+        variant: "primary",
+        solid: true,
+      });
     },
   },
 };

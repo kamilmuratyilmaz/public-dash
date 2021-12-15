@@ -40,5 +40,11 @@
         "usage_kW": "Kullanım kW",
         "usage_fee": "Kullanım Bedeli",
         "discounted_price": "İndirimli Fiyat"
+    },
+
+    "toaster": {
+        "title": "Hoş Geldin",
+        "register_message": "Kaydınız Başarıyla Oluşturuldu!",
+        "login_message": "Giriş Yapıldı"
     }
 }

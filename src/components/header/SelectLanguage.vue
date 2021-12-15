@@ -25,6 +25,9 @@ export default {
       languages: Object.keys(this.$i18n.messages),
     };
   },
+  beforeMount() {
+    this.$i18n.locale = localStorage.getItem("lang");
+  },
   computed: {
     langGet() {
       return this.$i18n.locale;
@@ -33,6 +36,7 @@ export default {
   methods: {
     langSet(lang) {
       this.$i18n.locale = lang;
+      localStorage.setItem("lang", lang);
       return lang;
     },
   },

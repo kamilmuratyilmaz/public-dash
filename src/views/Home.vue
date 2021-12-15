@@ -1,5 +1,5 @@
 <template>
-  <div class="logout" v-if="user == 'login'">
+  <div class="logout" v-if="isLogin == 'login'">
     <NavbarLoggedIn />
   </div>
 
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      user: "login",
+      isLogin: "login",
     };
   },
 };

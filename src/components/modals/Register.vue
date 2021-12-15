@@ -71,6 +71,7 @@
 
 <script>
 import { register } from "@/mixins/validation.js";
+import { mapActions } from "vuex";
 export default {
   name: "Register",
   mixins: [register],
@@ -92,11 +93,19 @@ export default {
     };
   },
   methods: {
+    ...mapActions("user", ["register"]),
     routeBack() {
-      this.$router.push("/");
+      setTimeout(() => this.$router.push("/"), 2500);
     },
     submitModal() {
       this.$v.$touch();
+      this.register;
+      this.$bvToast.toast(this.$t("toaster.register_message"), {
+        title: `${this.$t("toaster.title")} ${this.$v.user.name.$model}`,
+        toaster: "b-toaster-top-center",
+        variant: "primary",
+        solid: true,
+      });
     },
   },
 };
