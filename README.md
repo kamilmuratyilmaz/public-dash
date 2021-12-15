@@ -16,6 +16,7 @@ Energy Management System for Facilities
 - Backend / Frontend Included
 - SQL Database & MongoDB
 - Bcrypt
+- Jsonwebtoken
 
 ### Technologies
 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="19px" height="15px"></a> JavaScript 
