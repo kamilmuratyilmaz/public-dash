@@ -7,7 +7,7 @@
       class="mt-5"
     >
       <FactoryList />
-      <b-card id="factory-table">
+      <b-card id="factory-table" v-if="selected > []">
         <FactoryTable />
       </b-card>
     </b-card>
@@ -17,6 +17,7 @@
 <script>
 import FactoryList from "@/components/dashboard/FactoryList";
 import FactoryTable from "@/components/dashboard/FactoryTable";
+import { mapState } from "vuex";
 
 export default {
   name: "Dashboard",
@@ -28,6 +29,9 @@ export default {
     return {
       route: this.$route.params.id,
     };
+  },
+  computed: {
+    ...mapState("simpleGet", ["selected"]),
   },
 };
 </script>

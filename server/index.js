@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", log, user);
+app.use("/user", log, user);
 app.get("/factory-list", authorization, db.factory_list.getAll);
 app.get("/factory-name", authorization, db.factory_name.getAll);
 

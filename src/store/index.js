@@ -1,23 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import simpleGet from "./modules/simpleGet";
+import user from "./modules/user";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: true,
-  state: {
-    selected: [],
+  modules: {
+    simpleGet,
+    user,
   },
-  mutations: {
-    SET_SELECTED_FACTORY(state, factory) {
-      state.selected = factory;
-    },
-  },
-  actions: {
-    getFactory({ commit }, factory) {
-      commit("SET_SELECTED_FACTORY", factory);
-    },
-  },
-  getters: {},
-  modules: {},
 });

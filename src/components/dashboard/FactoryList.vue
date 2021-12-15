@@ -9,6 +9,7 @@
       responsive
       striped
       selectable
+      select-mode="single"
       @row-selected="onRowSelected"
       head-variant="dark"
       :sort-by.sync="sortBy"
@@ -36,7 +37,6 @@
         </b-card>
       </template>
     </b-table>
-    {{ selected }}
     <router-view></router-view>
   </div>
 </template>
@@ -67,25 +67,8 @@ export default {
       ],
     };
   },
-  methods: {
-    ...mapActions(["getFactory"]),
-    edit() {
-      this.$router.push({
-        name: "EditTable",
-        query: { edit: "factory-list" },
-        params: { items: this.items, fields: this.fields },
-      });
-    },
-    onRowSelected(items) {
-      let factory = items.map((item) => {
-        return item.factory_name;
-      });
-      this.getFactory(factory);
-      console.log(this.selected);
-    },
-  },
   computed: {
-    ...mapState(["selected"]),
+    ...mapState("simpleGet", ["selected"]),
     fields() {
       return [
         {
@@ -120,6 +103,23 @@ export default {
         },
         { key: "edit", label: this.$t("table.actions"), type: "edit" },
       ];
+    },
+  },
+  methods: {
+    ...mapActions("simpleGet", ["getFactory"]),
+    edit() {
+      this.$router.push({
+        name: "EditTable",
+        query: { edit: "factory-list" },
+        params: { items: this.items, fields: this.fields },
+      });
+    },
+    onRowSelected(items) {
+      let factory = items.map((item) => {
+        return item.factory_name;
+      });
+      this.getFactory(factory);
+      console.log(this.selected);
     },
   },
 };

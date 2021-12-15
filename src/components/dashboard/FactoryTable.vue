@@ -14,7 +14,7 @@
       :sort-desc.sync="sortDesc"
     >
       <template #table-caption>
-        <b style="font-size: 20px">{{ $t("table.factory_list") }}</b>
+        <b style="font-size: 20px">{{ selected[0][0] }}</b>
       </template>
 
       <template #cell(edit)="row">
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "FactoryList",
   data() {
@@ -48,17 +49,17 @@ export default {
       sortDesc: false,
       items: [
         {
-          factory_unit: "Mk Makina",
-          date_range: "2021-12-01",
-          usage_kW: "2022-01-01",
-          usage_fee: 230,
+          factory_unit: "production",
+          date_range: "[2021-12-01,2022-01-02)",
+          usage_kW: "5600",
+          usage_fee: 12000,
           discounted_price: false,
         },
         {
-          factory_unit: "Boj Döküm",
-          date_range: "2021-12-01",
-          usage_kW: "2022-01-01",
-          usage_fee: 130,
+          factory_unit: "production",
+          date_range: "[2021-12-01,2022-01-02)",
+          usage_kW: "8600",
+          usage_fee: 26000,
           discounted_price: true,
         },
       ],
@@ -74,6 +75,7 @@ export default {
     },
   },
   computed: {
+    ...mapState("simpleGet", ["selected"]),
     fields() {
       return [
         {
