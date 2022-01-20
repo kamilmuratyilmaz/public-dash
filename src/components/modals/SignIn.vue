@@ -70,16 +70,21 @@ export default {
           password: this.$t("modal.label.password"),
         },
       },
+      userData: {},
     };
   },
   methods: {
-    ...mapActions("user", ["login"]),
+    ...mapActions("userData", ["login"]),
     routeBack() {
       setTimeout(() => this.$router.push("/"), 2500);
     },
     submitModal() {
       this.$v.$touch();
-      this.login;
+      this.userData = {
+        email: this.$v.user.email.$model,
+        password: this.$v.user.password.$model,
+      };
+      this.login(this.userData);
       this.$bvToast.toast(this.$t("toaster.login_message"), {
         title: `${this.$t("toaster.title")} ${this.$v.user.email.$model}`,
         toaster: "b-toaster-top-center",

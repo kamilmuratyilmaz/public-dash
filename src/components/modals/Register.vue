@@ -90,6 +90,7 @@ export default {
         },
       },
       options: ["User", "Admin"],
+      userData: {},
     };
   },
   methods: {
@@ -99,7 +100,14 @@ export default {
     },
     submitModal() {
       this.$v.$touch();
-      this.register;
+      this.userData = {
+        email: this.$v.user.email.$model,
+        username: this.$v.user.name.$model,
+        password: this.$v.user.password.$model,
+        role: this.$v.user.role.$model,
+      };
+      console.log(this.userData);
+      this.register(this.userData);
       this.$bvToast.toast(this.$t("toaster.register_message"), {
         title: `${this.$t("toaster.title")} ${this.$v.user.name.$model}`,
         toaster: "b-toaster-top-center",
