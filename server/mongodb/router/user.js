@@ -24,7 +24,7 @@ router.post(
 
     check(
       "password",
-      "password is not valid, it must be min 6 length"
+      "password is not valid, it must be min 8 length"
     ).isLength({
       min: 8,
     }),

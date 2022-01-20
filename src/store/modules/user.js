@@ -4,7 +4,9 @@ export default {
   namespaced: true,
   state: {
     userData: {},
-    apiURL: process.env.VUE_APP_SERVER_URL,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
   },
   mutations: {
     SET_REGISTERED_USER(state, userData) {
@@ -14,17 +16,18 @@ export default {
   actions: {
     register({ state }, userData) {
       return axios
-        .post(`${state.apiURL}/user/register`, userData)
+        .post("user/register", Object.values(userData), {
+          headers: { ...state.headers },
+        })
         .then((res) => {
           this.$app.$bvToast.toast("Registeration Successful!", {
             toaster: "b-toaster-buttom-center",
           });
-          res = userData;
-          console.log(res);
+          console.log(res.data);
           return res.data;
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.request);
           return err;
         });
     },
