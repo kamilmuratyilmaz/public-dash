@@ -11,6 +11,7 @@ const user = require("./mongodb/router/user");
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use("/user", log, user);
 app.get("/factory-list", authorization, db.factory_list.getAll);

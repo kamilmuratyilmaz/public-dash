@@ -17,7 +17,7 @@ const userSchema = new Schema({
   role: {
     type: String,
     enum: {
-      values: ["admin", "user"], // only this variables could work
+      values: ["Admin", "User"], // only this variables could work
       message: "(VALUE) is not supported",
     },
     default: "user",

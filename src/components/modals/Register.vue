@@ -108,12 +108,6 @@ export default {
       };
       console.log(this.userData);
       this.register(this.userData);
-      this.$bvToast.toast(this.$t("toaster.register_message"), {
-        title: `${this.$t("toaster.title")} ${this.$v.user.name.$model}`,
-        toaster: "b-toaster-top-center",
-        variant: "primary",
-        solid: true,
-      });
     },
   },
 };

@@ -18,7 +18,7 @@ router.post(
   "/register",
   [
     check("username", "username is not valid").not().isEmpty(),
-    check("username", "username is not valid").isString(),
+    check("username", "username is not String").isString(),
 
     check("email", "email is not valid").isEmail(),
 
@@ -28,6 +28,7 @@ router.post(
     ).isLength({
       min: 8,
     }),
+    check("role", "role is not valid").not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
