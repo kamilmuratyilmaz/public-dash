@@ -28,6 +28,16 @@ export default {
         console.log(err);
       }
     },
+    async login({ commit }) {
+      try {
+        const res = await axios.post("/user/login");
+        commit("CHECK_USER");
+        console.log(res);
+      } catch (err) {
+        console.log(err.response);
+        console.log(err);
+      }
+    },
   },
   getters: {},
   modules: {},

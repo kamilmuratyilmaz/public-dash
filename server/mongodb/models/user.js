@@ -20,7 +20,7 @@ const userSchema = new Schema({
       values: ["Admin", "User"], // only this variables could work
       message: "(VALUE) is not supported",
     },
-    default: "user",
+    default: "User",
   },
 });
 

@@ -69,7 +69,7 @@ router.post(
 );
 
 router.post(
-  "/sign-in",
+  "/login",
   [
     check("email", "email is not valid").isEmail(),
 
