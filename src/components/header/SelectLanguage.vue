@@ -26,6 +26,7 @@ export default {
     };
   },
   beforeMount() {
+    localStorage.setItem("lang", this.$i18n.locale);
     this.$i18n.locale = localStorage.getItem("lang");
   },
   computed: {
