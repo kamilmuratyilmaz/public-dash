@@ -26,7 +26,7 @@
             >
             <b-button
               class="mx-2 my-sm-0"
-              @click="buttonFunctions(`settings`)"
+              @click="buttonFunctions(`user-logout`)"
               >{{ $t("user.logout") }}</b-button
             >
           </b-nav-form>
@@ -40,7 +40,7 @@
 
 <script>
 import SelectLanguage from "./SelectLanguage";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "NavbarLoggedIn",
   components: {
@@ -56,17 +56,27 @@ export default {
     this.$router.push("/user-name/:dashboard");
   },
   methods: {
+    ...mapMutations("user", ["SET_LOGIN_STATUS"]),
     buttonFunctions(val) {
-      if (val == "dashboard") {
-        this.$router.push({
-          name: "Dashboard",
-          params: { id: ":dashboard" },
-        });
-      } else if (val == "settings") {
-        this.$router.push({
-          name: "UserSettings",
-          params: { id: ":settings" },
-        });
+      switch (val) {
+        case "dashboard":
+          this.$router.push({
+            name: "Dashboard",
+            params: { id: ":dashboard" },
+          });
+          break;
+        case "settings":
+          this.$router.push({
+            name: "UserSettings",
+            params: { id: ":settings" },
+          });
+          break;
+        case "user-logout":
+          {
+            this.$router.push("/");
+            this.SET_LOGIN_STATUS(null);
+          }
+          break;
       }
     },
   },
