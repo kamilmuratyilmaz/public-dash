@@ -41,6 +41,9 @@ export default {
   data() {
     return {};
   },
+  created() {
+    this.$router.push("/");
+  },
   methods: {
     buttonFunctions(val) {
       if (val == "sign-in") {

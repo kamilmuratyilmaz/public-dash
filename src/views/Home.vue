@@ -1,9 +1,9 @@
 <template>
-  <div class="logout" v-if="isLogin == 'login'">
+  <div class="login" v-if="isLogin == true">
     <NavbarLoggedIn />
   </div>
 
-  <div class="login" v-else>
+  <div class="logout" v-else>
     <Navbar />
     <b-container fluid>
       <b-row>
@@ -31,6 +31,7 @@
 <script>
 import Navbar from "../components/header/Navbar";
 import NavbarLoggedIn from "../components/header/NavbarLoggedIn";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -39,9 +40,13 @@ export default {
     NavbarLoggedIn,
   },
   data() {
-    return {
-      isLogin: "logdin",
-    };
+    return {};
+  },
+  computed: {
+    ...mapState("user", ["token"]),
+    isLogin() {
+      return this.token == null ? false : true;
+    },
   },
 };
 </script>

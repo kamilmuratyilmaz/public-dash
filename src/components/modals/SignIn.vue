@@ -34,18 +34,6 @@
             :state="$v.user.password.$error ? false : null"
           ></b-form-input>
         </b-form-group>
-
-        <b-form-group id="input-group-3" v-slot="{ ariaDescribedby }">
-          <b-form-checkbox-group
-            v-model="$v.user.checked.$model"
-            id="checkboxes-3"
-            :aria-describedby="ariaDescribedby"
-          >
-            <b-form-checkbox value="saved">{{
-              translate.remember
-            }}</b-form-checkbox>
-          </b-form-checkbox-group>
-        </b-form-group>
       </b-form>
     </b-modal>
   </div>
@@ -74,9 +62,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions("userData", ["login"]),
+    ...mapActions("user", ["login"]),
     routeBack() {
-      setTimeout(() => this.$router.push("/"), 2500);
+      this.$router.push("/");
     },
     submitModal() {
       this.$v.$touch();
@@ -84,13 +72,7 @@ export default {
         email: this.$v.user.email.$model,
         password: this.$v.user.password.$model,
       };
-      this.login(this.userData);
-      this.$bvToast.toast(this.$t("toaster.login_message"), {
-        title: `${this.$t("toaster.title")} ${this.$v.user.email.$model}`,
-        toaster: "b-toaster-top-center",
-        variant: "primary",
-        solid: true,
-      });
+      this.login(JSON.stringify(this.userData));
     },
   },
 };

@@ -106,8 +106,7 @@ export default {
         password: this.$v.user.password.$model,
         role: this.$v.user.role.$model,
       };
-      console.log(this.userData);
-      this.register(this.userData);
+      this.register(JSON.stringify(this.userData));
     },
   },
 };

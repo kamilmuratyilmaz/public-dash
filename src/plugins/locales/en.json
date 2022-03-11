@@ -2,7 +2,8 @@
     "user": {
         "sign_in": "Sign In",
         "register": "Register",
-        "settings": "User Options"
+        "settings": "User Options",
+        "logout": "Logout"
     },
 
     "dashboard": "Dashboard",
