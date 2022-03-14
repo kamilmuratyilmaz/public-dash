@@ -53,7 +53,8 @@ export default {
     ...mapState("user", ["userMail"]),
   },
   created() {
-    this.$router.push("/user-name/:dashboard");
+    if (this.$route.path !== "/user-name/:dashboard")
+      this.$router.push("/user-name/:dashboard");
   },
   methods: {
     ...mapMutations("user", ["SET_LOGIN_STATUS"]),

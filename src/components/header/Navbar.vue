@@ -42,7 +42,7 @@ export default {
     return {};
   },
   created() {
-    this.$router.push("/");
+    if (this.$route.path !== "/") this.$router.push("/");
   },
   methods: {
     buttonFunctions(val) {
