@@ -44,8 +44,18 @@ router.post(
       let user = new User({ username, email, password, role });
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt); // x-access-token (jwt)
-
-      await user.save();
+      await User.init();
+      await user
+        .save()
+        .then(() => {
+          console.log("User Saved");
+        })
+        .catch((err) => {
+          console.log(err.message);
+          return res.status(400).json({
+            errors: "Email in use",
+          });
+        });
 
       const payload = {
         user: {
@@ -58,12 +68,12 @@ router.post(
         { expiresIn: "1m" },
         (err, token) => {
           if (err) throw err;
-          res.status(200).json({ token });
+          return res.status(200).json({ token });
         }
       );
     } catch (e) {
       console.log(e.message);
-      res.status(500).send("error in await");
+      return res.status(500).send("error in await");
     }
   }
 );

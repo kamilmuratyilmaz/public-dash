@@ -31,8 +31,8 @@ export default {
           solid: true,
         });
       } catch (err) {
-        console.log(err.response);
-        console.log(err);
+        let error = Object.values(err.response.data);
+        alert(error);
       }
     },
     async login({ commit }, userData) {
@@ -45,7 +45,6 @@ export default {
         commit("SET_USER", userData.email);
         commit("SET_LOGIN_STATUS", res.data);
       } catch (err) {
-        console.log(err.response);
         console.log(err);
       }
     },
