@@ -41,3 +41,5 @@ app.listen(process.env.PORT, (err) => {
     console.log(process.env.PORT + " listening ...");
   }
 });
+
+// TODO IP ADDRESS CHECK
